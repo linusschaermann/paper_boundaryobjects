@@ -1,0 +1,418 @@
+\documentclass[12pt,oneside]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   Zusaetzliche Pakete  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{enumerate}  
+\usepackage{fancyhdr}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{palatino}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{titlesec}
+\usepackage{acronym}% http://ctan.org/pkg/acronym
+\usepackage{enumitem}% http://ctan.org/pkg/enumitem
+
+%folgende Zeile auskommentieren für englische Arbeiten
+%\usepackage[ngerman]{babel}
+%folgende Zeile auskommentieren für deutsche Arbeiten
+\usepackage[ngerman, english]{babel}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bookmarks]{hyperref}
+\usepackage[justification=centering]{caption}
+\usepackage[style=apa,natbib=true,backend=biber,maxbibnames=20]{biblatex}
+\usepackage{csquotes}
+\bibliography{literature}
+
+\setlength{\parindent}{0em} 
+\setlist[itemize]{noitemsep, topsep=0pt}
+\setlist[enumerate]{noitemsep, topsep=0pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definition der Kopfzeile %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\setlength{\headheight}{16pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Definition des Deckblattes und der Titelseite  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\JMUTitle}[9]{
+
+  \thispagestyle{empty}
+  \vspace*{\stretch{1}}
+  {\parindent0cm
+  \rule{\linewidth}{.7ex}}
+  \begin{flushright}
+    \vspace*{\stretch{1}}
+    \sffamily\bfseries\Huge
+    #1\\
+    \vspace*{\stretch{1}}
+    \sffamily\bfseries\large
+    #2\\
+    \vspace*{\stretch{1}}
+    \sffamily\bfseries\small
+    #3
+  \end{flushright}
+  \rule{\linewidth}{.7ex}
+
+  \vspace*{\stretch{1}}
+  \begin{center}
+    \includegraphics[width=2in]{siegel} \\
+    \vspace*{\stretch{1}}
+    \Large Seminararbeit  \\
+
+    \vspace*{\stretch{2}}
+   \large Lehrstuhl f\"{u}r Wirtschaftsinformatik\\
+    \large und Systementwicklung\\
+    \large Universität Würzburg\\
+    \vspace*{\stretch{1}}
+    \large Betreuer:  #8 \\[1mm]
+    
+    \vspace*{\stretch{1}}
+    \large W\"urzburg, den #7 \\
+        \vspace*{\stretch{0.25}}
+
+    Bearbeitungszeit: 14.03.2025 - 09.05.2025 % Die Bearbeitungszeit der Seminar-/ Abschlussarbeit ist hier einzutragen.
+
+  \end{center}
+}
+
+\titlespacing*{\section}
+{0pt}{3.5ex plus 1ex minus .2ex}{.2ex plus .2ex}
+\titlespacing*{\subsection}
+{0pt}{1.5ex plus 1ex minus .2ex}{.2ex plus .2ex}
+\titlespacing*{\subsubsection}
+{0pt}{1.5ex plus 1ex minus .2ex}{.2ex plus .2ex}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Beginn des Dokuments  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+  \JMUTitle
+      {Boundary Objects in AI/ML Contexts: A Systematic Literature Review in IS Research}        % Titel der Arbeit
+      {Linus Schärmann}                        % Vor- und Nachname des Autors
+      {2910412}
+      
+      {Wirtschaftswissenschaftlichen Fakultät}  % Name der Fakultaet
+      {W"urzburg 2025}                          % Ort und Jahr der Erstellung
+      {09.05.2025}                              % Tag der Abgabe
+      {Manuel Zall}               % Name des Erstgutachters
+      {}                          % Name des Zweitgutachters
+
+  \clearpage
+
+\lhead{}
+\pagenumbering{Roman} 
+    \setcounter{page}{1}
+
+\tableofcontents
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Kurzzusammenfassung   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\lhead{Abstract}
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+Effective collaboration across disciplinary boundaries is crucial yet challenging in information systems, especially with the increasing integration of artificial intelligence and machine learning. Boundary objects offer a valuable concept to understand how shared artifacts can facilitate such collaborations. This seminar paper presents a structured literature review, conducted following the guidelines proposed by \citet[43-44]{okoli2015guide}, on the application of boundary object theory within information systems research, with a specific focus on the integration of artificial intelligence and machine learning. The review reveals that boundary objects, which can range from mock-ups, prototypes, and data visualizations to artificial intelligence models themselves, are an essential part in enabling knowledge sharing, collaboration in complex environments, and bridging knowledge gaps among diverse stakeholders. In summary, the use of boundary objects in such systems enables effective planning, development and use of information systems and artificial intelligence/machine learning applications.
+
+%\newpage
+%\lhead{List of Figures} % Bei englischsprachiger Arbeit anzupassen auf: List of Figures
+%\addcontentsline{toc}{section}{List of Figures} % Bei englischsprachiger Arbeit anzupassen auf: List of Figures
+%\listoffigures
+
+\newpage
+\lhead{List of Tables} % Bei englischsprachiger Arbeit anzupassen auf: List of Tables
+\addcontentsline{toc}{section}{List of Tables} % Bei englischsprachiger Arbeit anzupassen auf: List of Tables
+\listoftables
+\newpage
+
+\setlength{\parskip}{0.5em} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Definition der Abkürzungen  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lhead{List of Abbreviations} % Bei englischsprachiger Arbeit anzupassen auf: List of Abbreviations
+\section*{List of Abbreviations} % Bei englischsprachiger Arbeit anzupassen auf: List of Abbreviations
+\addcontentsline{toc}{section}{List of Abbreviations} % Bei englischsprachiger Arbeit anzupassen auf: List of Abbreviations
+
+\begin{acronym}
+ \acro{AI}{Artificial Intelligence}
+ \acro{BO}{Boundary Object}
+ \acro{BOT}{Boundary Object Theory}
+ \acro{BR}{Boundary Resource}
+ \acro{IIoT}{Industrial Internet of Things}
+ \acro{IS}{Information System}
+ \acro{IT}{Information Technology}
+ \acro{ML}{Machine Learning}
+ \acro{SLR}{Systematic Literature Review}
+\end{acronym}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Einstellungen  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\pagenumbering{arabic}  
+    \setcounter{page}{1}
+\lhead{\nouppercase{\leftmark}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Hauptteil  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction} \label{introduction}
+
+Effective collaboration in \ac{IS} projects has long been a critical determinant of success, yet it remains a persistent challenge. This challenge is often rooted in the diverse backgrounds, expertise, and objectives of the various stakeholders involved, leading to knowledge boundaries that hinder mutual understanding and coordinated action \citep[1]{folmer2014method}. \newline
+The recent and rapid integration of \ac{AI} and \ac{ML}  into \ac{IS}s further complicates this landscape. \ac{AI}/\ac{ML} systems, often characterized by their complexity and 'black box' nature, introduce new layers of specialized knowledge and can create even wider gaps between technical developers, domain experts, and end-users. Without mechanisms to bridge these divides, the potential of \ac{AI}/\ac{ML} to drive innovation and efficiency in \ac{IS}s can be significantly hampered \citep[11]{rahlmeier2024bridging}.
+\ac{BOT} offers a valuable lens through which to understand and address these collaborative hurdles, proposing that shared artifacts can facilitate communication and translation across differing perspectives.
+
+\subsection{Motivation and Research Objectives} \label{motivation-and-research-objectives}
+
+The increasing reliance on \ac{AI}/\ac{ML} within \ac{IS}s necessitates a deeper understanding of how collaborative challenges specific to these technologies can be effectively managed. While \ac{BOT} has been applied in various \ac{IS} contexts to explain knowledge sharing and coordination, its application and efficacy specifically within the burgeoning field of \ac{AI}/\ac{ML} in \ac{IS}s research remain less systematically explored. \newline
+This systematic literature review is motivated by the need to consolidate existing knowledge on \ac{BOT}'s role in this specialized domain, identify how \ac{AI}/\ac{ML} systems themselves might function as \ac{BO}s, and uncover the unique challenges and opportunities BOT presents in fostering collaboration around these complex technologies. \newline
+The primary objective of this review is to provide a comprehensive and systematic analysis of how BOT has been utilized in \ac{IS}s and \ac{AI}/\ac{ML}-related research. 
+
+\subsection{Structure of the Paper} \label{structure-of-the-paper}
+
+This paper is structured as follows. Section~\ref{theoretical-background} provides the theoretical background by introducing the origins and core concepts of \ac{BOT}. Section~\ref{methodology} outlines the applied methodology, following the eight-step process proposed by \citet[43-44]{okoli2015guide} for conducting a rigorous systematic literature review. In Section~\ref{structured-literature-review-results}, the results of the structured review are presented, including an overview of identified studies, their applications in \ac{IS}s, and intersections with \ac{AI} and \ac{ML} contexts. Section~\ref{evaluation-of-bot-in-is-research} evaluates the strengths and limitations of \ac{BOT} in \ac{IS}s research. Section~\ref{future-research-directions} outlines avenues for future research, identifying open gaps and suggesting enhancements of \ac{BOT} for emerging technological domains. Finally, Section~\ref{conclusion} concludes the paper by summarizing the findings, reflecting on the study’s limitations, and providing a future outlook.
+
+\section{Theoretical Background} \label{theoretical-background}
+
+To understand how collaboration takes place across different fields and disciplines, this section introduces the concept of \ac{BOT}. Gradually, this concept has been taken up in various areas of research, including \ac{IS}s, where it has been used to study coordination in complex and multi-stakeholder environments \citep[26]{fominykh2016boundary}. More recently, \ac{BOT} has gained relevance in the context of \ac{AI} and \ac{ML}, where different actors, such as data scientists, business experts, and end users, need to collaborate effectively \citep[12]{rahlmeier2024bridging}. \newline
+\ac{BOT} was originally introduced by \citet[388]{star1989institutional} in their study "Institutional Ecology, 'Translations' and \ac{BO}s: Amateurs and Professionals in Berkeley's Museum of Vertebrate Zoology, 1907-39". Their research investigated how collaboration was made possible between professionals and amateurs of the Museum of Vertebrate Zoology at the University of California, Berkeley, despite different social worlds, through the use of shared artifacts \citep[388]{star1989institutional}. The authors defined the term 'boundary objects' as:
+\begin{quote}
+"objects which are both plastic enough to adapt to local needs and the constraints of the several parties employing them, yet robust enough to maintain a common identity across sites. They are weakly structured in common use, and become strongly structured in individual-site use. These objects may be abstract or concrete. They have different meanings in different social worlds but their structure is common enough to more than one world to make them recognizable, a means of translation. The creation and management of \ac{BO}s is a key process in developing and maintaining coherence across intersecting social worlds." \citep[393]{star1989institutional}
+\end{quote}
+This quote highlights the characteristics of \ac{BO}s as both adoptable and stable elements in cross-disciplinary collaboration. \newline
+Building on the original study, \citet[451]{carlile2002pragmatic} identified three characteristics for \ac{BO}s to utilize them as efficiently as possible. A \ac{BO} should introduce a shared syntax or language, specific meanings for each stakeholder and offer a way for these stakeholders to adjust from their point of view \citep[451-452]{carlile2002pragmatic}. In modern adaptions the problem of their inflexibility has risen, so these objects could get outdated quickly in fast changing environments \citep[196]{gal2008dynamics}. Because of this limitation, \citet[198-199]{gal2008dynamics} developed a "theoretical model that describes the dynamic interplay among social infrastructures, boundary objects and social identities of interacting social groups" which states that \ac{BO}s can be dynamic actors themselves, through their natural drive to enable interaction, by changing their environment. 
+
+\section{Methodology} \label{methodology}
+
+This study follows the \ac{SLR} methodology proposed by \citet[43-44]{okoli2015guide} which comprises eight structured steps to ensure a rigorous and replicable review process. The goal is to explore how the concept of \ac{BO}s is applied and conceptualized within \ac{IS}s research, particularly in the context of \ac{AI} and \ac{ML}. As this review was performed by a single researcher, not all steps could be carried out exactly according to the guidelines and required small changes.
+
+\subsection{Step 1: Purpose of the Review}
+To conduct a explicit literature review, the general topic and especially the purpose of the review need to be clear \citep[887]{okoli2015guide}. This reviews goal is to identify, analyze, and synthesize how \ac{BOT} is utilized in \ac{IS}s research to bridge interdisciplinary collaboration in \ac{AI}/\ac{ML}-related contexts. This includes theoretical conceptualizations, empirical applications, and methodological contributions. Finally the review intends to uncover potential gaps in \ac{IS}s research, especially with a focus on \ac{AI} and \ac{ML}.
+
+\subsection{Step 2: Protocol and Training}
+
+In a multi reviewer scenario, all involved have to explicitly be clear about the goal and about the procedure which involves training all reviewers \citep[889-891]{okoli2015guide}. As this review was conducted by a single reviewer, a complete draft protocol in accordance to \citet[889-891]{okoli2015guide} would have caused inefficiency in selecting and extracting the literature. Instead the review was conducted using self developed guidelines, which served to guide the consistent application of inclusion and exclusion criteria, search strategies, and data extraction procedures. These guidelines required the tabulation of the literature at each step, following the requirements specified for that step, in order to deliver a lossless and academically valuable paper.
+
+\subsection{Step 3: Practical Screening Criteria}
+Only peer-reviewed journal articles, high-quality conference proceedings, or book chapters published in English were included. Sources had to mention 
+"boundary objects" or similar concepts such as "boundary spanning" or "collaboration" in the title or abstract and relate to the fields of Information 
+Systems, \ac{AI}, or \ac{ML}. Literature, book chapters, and purely theoretical works without connection to the subject of this review were excluded.
+
+\subsection{Step 4: Literature Search}
+The search was carried out across multiple databases, including AISeL, EBSCOhost, Google Scholar, and Web of Science using the following query:
+
+\begin{quote}
+\raggedright
+\begin{ttfamily}
+("boundary object" OR "boundary objects" OR "boundary object theory") AND ("artificial intelligence" OR "AI" OR "machine learning" OR "ML")
+\end{ttfamily}
+\end{quote}
+
+This yielded an initial sample of 785 results that exclude most of the Google Scholar search results which returned a total of 17,300 results. Here, only 
+the first 100 results sorted by relevance were taken into account. After applying practical screening criteria and removing duplicates, a total of 98 
+studies were retained for further analysis.
+
+\subsection{Step 5: Data Extraction}
+Relevant data was extracted in a structured table that included metadata (author, year, title, journal), type of study, research methodology, key 
+findings, relevance to \ac{BOT} in \ac{IS}s and the role of \ac{AI}/\ac{ML}.\footnote{To support the extraction of relevant data, generative AI tools such as ChatGPT (OpenAI, GPT-4, April 2025 version) and Gemini (Google, 2.0 Flash, April 2025 version) were used. All outputs were critically reviewed and revised by the author who assumes full responsibility for the final content.} This allowed for consistent coding and comparison across studies.
+
+\subsection{Step 6: Exclusion Screening}
+The retained articles were evaluated on the basis of their title, abstract, theoretical contribution, and relevance to the research question. Studies with unclear methodology or lacking relevance to the intersection of \ac{BO}s and \ac{AI}/\ac{ML} in \ac{IS} contexts were excluded, bringing the number of studies to analyze further to 46. 
+
+\subsection{Step 7: Synthesis of Studies}
+A thematic synthesis was conducted to identify recurring themes and conceptual patterns. Studies were grouped into categories to identify thematic accumulations. This allowed to structure the literature and categorize it to the respective sections of this review.
+
+\subsection{Step 8: Writing the Review}
+Based on the synthesis, the results section presents a structured overview of the literature review results, highlighting key contributions, utilized methodology, and thematic clusters in the reviewed literature.
+
+\section{Structured Literature Review Results} \label{structured-literature-review-results}
+
+This section presents the results of the structured literature review in accordance with the guidelines by \citet[43-44]{okoli2015guide} as outlined in the previous chapter. The findings of the data extraction are structured to highlight key patterns in relation to the use of \ac{BOT} in \ac{IS}s research, with a particular focus on the emerging role of \ac{AI} and \ac{ML}. The following subsections summarize the characteristics of \ac{BO}s, their application in \ac{IS}s and their relevance to \ac{AI} and \ac{ML}. 
+
+\subsection{Overview of Identified Studies} \label{overview-of-identified-studies}
+
+The literature review identified a range of studies applying the concept of \ac{BOT} across various domains. In particular, this review focuses on foundational theoretical contributions, applications in \ac{IS}s research, and more recent explorations in the context of \ac{AI}/\ac{ML}. Table~\ref{tab:overview-identified-studies} provides an overview of the studies categorized by topic and all references for each group.
+
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{Overview of identified studies}
+        \begin{tabular}{ l c p{8cm} } 
+        \toprule
+        \textbf{Topic} & \textbf{Amount} & \textbf{Citation} \\
+        \midrule
+        \ac{BOT} & 4 & \citealp{carlile2002pragmatic}; \citealp{abraham2013enterprise} \citealp{star1989institutional}; \citealp{gal2008dynamics} \\
+        \midrule
+        \ac{BOT} in \ac{IS}s Research & 27 & \citealp{folmer2014method}; \citealp{vanlooy2024theoretical}; \citealp{rosenkranz2014boundary}; \citealp{gantman2011boundary}; \citealp{fominykh2016boundary}; \citealp{huvila2017boundary}; \citealp{petrik2020boundary}; \citealp{mccarthy2020building}; \citealp{bakhaev2023cocreating}; \citealp{johansson2013cocreation}; \citealp{hsiao2012collaborative}; \citealp{gantman2014communication}; \citealp{corsaro2018crossing}; \citealp{steger2018ecosystem}; \citealp{elo2024enabling}; \citealp{ghazawneh2010governing}; \citealp{weeger2017artefacts}; \citealp{gasson2021managing}; \citealp{marheineke2016importance}; \citealp{abson2014ecosystem}; \citealp{koskinen2005metaphoric}; \citealp{petrik2021exploring}; \citealp{marheineke2016bridging}; \citealp{gasson2005resolving}; \citealp{jentsch2014shared}; \citealp{doolin2012sociomateriality}; \citealp{pawlowski2000supporting}; \\
+        \midrule
+        \ac{BOT} in \ac{AI} and \ac{ML} Contexts & 15 & \citealp{alter2021new}; \citealp{prentice2023artificial}; \citealp{chung2023artinter}; \citealp{rahlmeier2024bridging}; \citealp{krafft2020challenges}; \citealp{zebhauser2023entrepreneurial}; \citealp{yang2018investigating}; \citealp{veletsianos2024artificial}; \citealp{ayobi2021machine}; \citealp{mayer2023managing}; \citealp{cai2021onboarding}; \citealp{särner2024prospective}; \citealp{strübing1998bridging}; \citealp{kot2020concept}; \citealp{wilson2023learning};  \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:overview-identified-studies}
+\end{table}
+
+As shown in the table, the majority of studies apply \ac{BOT} in \ac{IS} contexts, reflecting its established role in supporting collaboration, knowledge integration, and system development. The growing number of publications in \ac{AI}/\ac{ML} contexts suggests a rising interest in leveraging \ac{BO}s to address interdisciplinary challenges and communication gaps in these emerging fields. These clusters offer a valuable foundation for analyzing how \ac{BOT} is utilized and adapted across different technological and organizational settings.
+
+\subsection{Applications of BOT in IS Research} \label{applications-of-bot-in-is-research}
+
+\ac{BOT} has been applied across a wide range of \ac{IS}s research fields, providing valuable insights into how technology mediates collaboration, knowledge sharing of individuals, and groups with differing backgrounds \citep[1]{huvila2017boundary}. The following subsections highlight different areas of the application of \ac{BO}s in \ac{IS}s.
+
+\subsubsection{Knowledge Sharing and Coordination Across Boundaries} \label{knowledge-sharing}
+
+The predominant and common understanding of \ac{BO}s suggests their use in the sharing of knowledge across social, professional and organizational boundaries to enable coordination and efficient collaboration. But the creation and use of \ac{BO}s comes with significant challenges (\citealp[307-308]{rosenkranz2014boundary}; \citealp[3]{gantman2014communication}). Bridging these divides effectively is crucial for collaboration in fields like software development and innovation processes (\citealp[18]{marheineke2016importance}; \citealp[9]{koskinen2005metaphoric}; \citealp[11]{gantman2014communication}). \newline
+Communication consists not only of simple information exchange, but of the negotiation of interests and new knowledge creation as \citet[11]{gantman2014communication} suggests. Even with a common syntax in communication, differing interpretations can arise \citep[444]{carlile2002pragmatic}. This complexity on knowledge boundaries can be remarkable \citep[328, 332]{rosenkranz2014boundary}. \ac{BO}s take an important role in spanning these boundaries by facilitating communication, coordination and collaboration for different stakeholders or environmental settings, where they serve as translator between these actors (\citealp[6372]{vanlooy2024theoretical}; \citealp[1813, 1817]{huvila2017boundary}). 
+\ac{BO}s are artifacts that can exist in the interfaces between communities and are comprehensible to different actors, making otherwise implicit knowledge accessible (\citealp[1817]{huvila2017boundary}; \citealp[466]{hsiao2012collaborative}). Much of \ac{IS}s research dealing with boundaries, boundary crossing, and collaboration, highlights how tools like classification systems or documents often function as \ac{BO}s \citep[1816-1817]{huvila2017boundary}. \newline
+Sociomateriality supports in understanding how these objects become essential parts of collaboration \citep[582]{doolin2012sociomateriality}. In order to prevent the impeding of knowledge sharing, \ac{BO}s should be used in a flexible manner and allow for interpretation \citep[1814-1815]{huvila2017boundary}. \ac{BO}s can embody, visualize, or articulate aspects of a topic across different actors \citep[486]{hsiao2012collaborative}. Examples include visualized information spaces used by air traffic managers which served as "boundary object displays" that decreased the need for coordination and improved collaboration \citep[1813]{huvila2017boundary}. \newline
+There is not just one single, static type of \ac{BO}s (\citealp[17]{koskinen2005metaphoric}; \citealp[1086]{marheineke2016bridging}), with metaphoric \ac{BO}s playing a significant role in the coordination of knowledge sharing in innovation processes, pragmatic \ac{BO}s to enhance the understanding and satisfaction to build and support social infrastructure (\citealp[17]{koskinen2005metaphoric}; \citealp[16-17, 21]{marheineke2016importance}). By using more than one type of them, they simplify the process to achieve shared knowledge and common meanings \citep[1090]{marheineke2016bridging}. Shared understanding emerges from the use of \ac{BO}s that fit the relevant boundaries in the process of knowledge sharing \citep[18]{marheineke2016importance}. While \ac{BO}s generally have positive effects, they can negatively impact knowledge sharing if they are mismatched or their capacity is inadequate for the complexity on the knowledge boundary \citep[323]{rosenkranz2014boundary}. Nonetheless, the absence of \ac{BO}s limits the possibility of creating common understanding and reduces the opportunity for success in innovation processes \citep[9]{koskinen2005metaphoric}.
+
+\subsubsection{Information Systems Development, Agile Practices, and Requirements Elicitation} \label{is-development}
+
+When developing \ac{IS}s, all collaborative tasks involve joint activities between business and \ac{IT}, such as project management or coordinating changes \citep[7]{jentsch2014shared}. This starts with the definition of business and system requirements especially in complex organizations and requires input from diverse stakeholders across boundaries and is followed by difficulties in the sharing of knowledge across organizational boundaries \citep[1]{gasson2005resolving}. This complexity gets increased by the differing terms and concepts used by developers and users \citep[8]{jentsch2014shared}. \ac{BO}s take the role of navigators as they play an important role in internal control within client organizations by creating shared meanings \citep[3-4]{gantman2011boundary}. In agile distributed \ac{IS}s development, contextual factors such as structure, identity, and culture determine the effectiveness of \ac{BO}s \citep[518]{mccarthy2020building}. \newline
+In this domain, various project-related artifacts function as \ac{BO}s, including requirements, specifications, prototypes, and even \ac{IS}s themselves \citep[5118]{weeger2017artefacts}. Even simple artifacts like documents or demo videos can be very helpful and act as effective \ac{BO}s (\citealp[7]{gantman2011boundary}; \citealp[8]{bakhaev2023cocreating}). 
+Shared \ac{IS}s also act as \ac{BO}s by connecting user communities \citep[336]{pawlowski2000supporting}. These evolving project deliverables facilitate the alignment between \ac{IS}s and business requirements \citep[5120]{weeger2017artefacts}. They enable stakeholders to try potential interactions, either though use in real scenarios (e.g. prototypes) or via internalization mechanisms like mental simulations \citep[5120]{weeger2017artefacts}. The iterative concretization of prototypes using agile methods facilitates the translation of knowledge and the alignment between \ac{IT} and business \citep[5121]{weeger2017artefacts}.\ac{IT} professionals have a strategic position due to their involvement in shared \ac{IS}s development as they can enable knowledge transfer among communities via these systems \citep[336]{pawlowski2000supporting}. \citet[584]{doolin2012sociomateriality} discovered that some \ac{BO}s emerge during development, while others are purposefully created. \ac{BO}s influence both the technical system and the social system (people, relationships) within the collaboration process, and are effective when they align the requirements of these dimensions \citep[4-5]{marheineke2016importance}.
+
+\subsubsection{Virtual Collaboration and Distributed Teams} \label{virtual-collaboration}
+
+Virtual collaboration and distributed teams face challenges, partly due to limited opportunities for face-to-face interactions \citep[513]{mccarthy2020building}. Within this context, collaborative tasks involve activities carried out by parties such as business and \ac{IT}, including planning, development, and coordination \citep[6]{jentsch2014shared}. \ac{BO}s are key in bridging communication in these remote and digitally mediated environments, facilitating shared understanding \citep[1091]{marheineke2016bridging}. \ac{BO}s influence social interrelationships during collaboration and provide the technical infrastructure necessary to realize it \citep[4]{marheineke2016importance}. \ac{BO}s that influence technology support information transmission between actors \citep[13]{marheineke2016importance}. Asynchronous communication, such as email, can support knowledge sharing in managing virtual collaboration \citep[20]{marheineke2016importance}. 
+Additionally, \ac{BO}s impact the social system by influencing individual knowledge building or people's relationships and help to manage their requirements in the collaboration process \citep[4-5]{marheineke2016importance}. Virtual collaboration requires both the conveyance of information and the convergence on meanings to create a common understanding \citep[1091]{marheineke2016bridging}. An online whiteboard serves as an example of a platform that utilizes a mix of \ac{BO}s to achieve this \citep[1091]{marheineke2016bridging}. Experts in distributed teams use a repertoire of project genres to facilitate cross-boundary coordination and make information visible \citep[465]{hsiao2012collaborative}. \ac{BO}s should support tasks aimed at addressing knowledge boundaries on the semantic level \citep[21]{marheineke2016importance}. \newline 
+However, providing \ac{BO}s that facilitate undesired activities, such as generating new ideas during a sensemaking phase, can be disadvantageous because they allow participants to deviate from the intended activity \citep[1092]{marheineke2016bridging}. Moderators of virtual collaborations can guide group creativity by specifically requesting participants to use certain \ac{BO}s for particular activities \citep[1092]{marheineke2016bridging}. While \ac{BO}s are useful for fostering cohesion in agile distributed teams, their role extends beyond this function \citep[519]{mccarthy2020building}. Beyond the technical and social dimensions, a broader discussion on aspects like task characteristics, knowledge about teammates, and cultural rules and values within the team is also relevant for virtual teams \citep[10]{jentsch2014shared}.
+
+\subsubsection{Digital Platforms and Ecosystems} \label{digital-platforms}
+
+Digital platforms and ecosystems bring together diverse actors who engage in conscious and intentional efforts to co-create value for each others benefit, often remaining closely connected through mutual governance mechanisms and aligned objectives \citep[309]{elo2024enabling}. These collaborations involve individuals, teams, and organizations with distinct roles, specialized knowledge, and skills aimed at achieving common goals \citep[309]{elo2024enabling}. Navigating the technological complexity and heterogeneity inherent in such environments, especially in contexts like \ac{IIoT} solutions, requiresthe recruitment and integration of external complementors who contribute unique knowledge \citep[1]{petrik2021exploring}. The expansion of the business space through digital marketing and social selling, increasing interaction points and the dematerialization of content, underscores the critical need for coordinating business relationships in these digital contexts \citep[228]{corsaro2018crossing}. Effective coordination is required for activities in business relationships to be pursued successfully across boundaries \citep[221]{corsaro2018crossing}. Digital tools and artifacts serve as \ac{BO}s, facilitating coordination among these varied actors and across different domains (\citealp[4]{ghazawneh2010governing}; \citealp[219-220]{corsaro2018crossing}). \ac{BOT} provides an approach to understand how platform owners can combine centralized control with the decentralized aggregation of heterogeneous knowledge resources \citep[4]{ghazawneh2010governing}. \newline
+While concepts like the ecosystem services have potential as \ac{BO}s for sustainability, digital implementations like computer code, which require unambiguous definitions, can move concepts towards a standardized phase (\citealp[30, 36]{abson2014ecosystem}; \citealp[158]{steger2018ecosystem}). However, for a concept to function effectively as a \ac{BO} in collaborative settings, its conceptualization must remain simultaneously vague in general use, arising from an organizational or communication need \citep[158]{steger2018ecosystem}. When interests conflict, the \ac{BO} becomes a social mediator, bringing issues of power, allegiances, and contributions to the forefront \citep[220]{corsaro2018crossing}. \newline
+Platform \ac{BR}s represent a scientifically recognized concept fostering complementary innovation in platform ecosystems \citep[2]{petrik2021exploring}. These \ac{BR}s are digital artifacts integrated into platform design, acting as complementors’ access points that enable interaction with the platform core, improve the development experience, and support the use of specific functionalities \citep[5]{petrik2021exploring}. Innovation platforms provide and combine specific technological building blocks for the execution and development of dependent peripheral modules \citep[2]{petrik2021exploring}. Platform providers compete for the engagement of complementary developers based on the quality of these \ac{BR}s \citep[4]{petrik2021exploring}. Governing third-party development through \ac{BR}s involves a series of actions repeated over time, balancing control and stimulating external contributions \citep[14]{ghazawneh2010governing}. Digital collaboration tools, such as digital whiteboards and video conferencing, serve a similar function in virtual settings, allowing participants to collaborate, generate, and discuss ideas \citep[5]{bakhaev2023cocreating}. E-commerce platforms, including mobile ones, also function as digital interaction points for purchases \citep[221]{corsaro2018crossing}. \newline
+The perceived quality of digital \ac{BR}s significantly impacts complementor reactions; poor performance or quality issues can lead complementors to rate the platform quality low and potentially abandon it to mitigate risks \citep[4]{petrik2021exploring}. Maintaining the institutional arrangements (rules, norms, and cognitive elements) that govern interactions mediated by these digital \ac{BO}s requires significant and continuous effort from all actors within the ecosystem, not just the platform provider \citep[312, 314-315]{elo2024enabling}. While the platform or collaboration technologies provide infrastructure, the collective establishment, alignment, and sustainment of these arrangements are necessary for ecosystem evolution and value co-creation \citep[315]{elo2024enabling}.
+
+\subsubsection{Design and Prototypes} \label{design-prototypes}
+
+Complexity in innovation and design tasks arises from the need to synthesize different perspectives, manage significant amounts of information, and understand the decisions shaping an artifacts evolution, with the creation of \ac{BO}s being integral to this complexity \citep[13]{koskinen2005metaphoric}. Design artifacts are crucial tools in collaborative settings, helping individuals with different backgrounds work together in situations requiring knowledge creation and exchange \citep[3]{gantman2011boundary}. Prototypes are prominent examples of design artifacts frequently employed as \ac{BO}s (\citealp[321]{rosenkranz2014boundary}; \citealp[5118]{weeger2017artefacts}; \citealp[580]{doolin2012sociomateriality}; \citealp[8]{gantman2011boundary}; \citealp[16]{koskinen2005metaphoric}). They are considered "ideal types" of objects that can be observed and used across different functional settings, alongside diagrams, mockups, or computer simulations \citep[4]{ghazawneh2010governing}. Prototypes are strategically used to overcome semantic boundaries and facilitate understanding (\citealp[3219]{rosenkranz2014boundary}; \citealp[578]{doolin2012sociomateriality}). For instance, in \ac{IS}s development, developers use prototypes to allow users to visualize data exactly as they want to see it, helping them move past initial hurdles and provide specific feedback on design \citep[335-336]{pawlowski2000supporting}. As published representations of solution design, prototypes are used in negotiations \citep[580]{doolin2012sociomateriality}. They enable users to try potential interactions with a system, helping form explanations and expectations about how the system will affect their activity and how it should be designed \citep[5116, 5120]{weeger2017artefacts}. Drawing on prototypes can inspire participants, enabling them to form broader thematic dimensions for consultations and debates \citep[8]{bakhaev2023cocreating}. Developers rely on prototypes for understanding requirements and building solutions \citep[576]{doolin2012sociomateriality}. \newline
+Design and prototypes are utilized in various contexts. They are central to initiatives of innovation and projects, such as living labs where prototypes are developed in a user-driven approach \citep[4]{johansson2013cocreation}. In the phase from product concept to finished product, strongly structured \ac{BO}s evolve through the use of tangible tools like prototypes and mock-ups \citep[16]{koskinen2005metaphoric}. Different tools, including systems prototypes and beta versions, are suited to support different control objectives, with some being more specific than universal tools like visual aids \citep[8]{gantman2011boundary}. The concept of \ac{BO}s is also valuable in education for improving the design and analysis of learning communities and collaborative activities \citep[2]{fominykh2016boundary}. \newline
+In proprietary contexts, the development governance involves balancing maintaining platform control with transferring design capability to users \citep[2]{ghazawneh2010governing}. This process involves developing new \ac{BR}s, securing platform control via compatible agreements, strengthening knowledge heterogeneity, and counteracting foreign \ac{BR}s \citep[14]{ghazawneh2010governing}. The design of new \ac{BR}s necessitates revisiting platform agreements, as their compatibility is critical for the platform owner \citep[13]{ghazawneh2010governing}. The process by which \ac{BR}s transfer design capability to application developers involves these inter-related steps \citep[14]{ghazawneh2010governing}. \newline
+The object of \ac{IS}s implementation is transformed from a problem (e.g., project goal) to a meaningful shape (e.g., prototypes) \citep[5116]{weeger2017artefacts}. Coordinating objects, including prototypes, incorporate and complicate previous problem structures to reflect an emergent design scope \citep[5427]{gasson2021managing}. \newline
+Prototypes can be purposefully developed to span semantic boundaries \citep[578]{doolin2012sociomateriality}. \ac{BO}s, including designs and prototypes, should be viewed as strategic tools to enhance business relationships \citep[232]{corsaro2018crossing}. Companies are increasingly investing in representing and displaying \ac{BO}s to make ideas less intangible and foster understanding \citep[232]{corsaro2018crossing}. This highlights the importance of information design and data visualization in giving shape to information for efficient understanding and sharing \citep[232]{corsaro2018crossing}. Managing \ac{BO}s strategically requires understanding specific roles and skills, such as communication, marketing, and design capabilities \citep[232]{corsaro2018crossing}. The design of systems and artifacts is not solely the responsibility of \ac{IS} professionals, as the boundary between development and use is blurring \citep[584]{doolin2012sociomateriality}. Engaging users in the design process through proactive dialogues and practices can empower them, shifting the researcher's role from translator to facilitator of collaborative design practices \citep[2, 11]{bakhaev2023cocreating}. While \ac{BO}s can support generating requirements and designs based on dialogue in distributed teams, their impact can sometimes be unexpected \citep[520]{mccarthy2020building}.
+
+\subsection{BOT in AI and ML Contexts} \label{bot-in-ai-and-ml-contexts}
+
+Recent developments in \ac{AI} and \ac{ML} with their complexity and context-dependency increased the need for collaboration across diverse groups. The application of \ac{BOT} plays a crucial role in facilitating the needs to develop, maintain and use these systems. This section reviews how \ac{BO}s are applied in \ac{AI} and \ac{ML} contexts to support interdisciplinary collaboration. 
+
+\subsubsection{AI/ML as Boundary Object in Cross-Disciplinary Collaboration} \label{ai-ml-as-boundary-objects-in-cross-disciplinary-collaboration}
+
+The increasing advancements in automation, collaboration with automated agents, and \ac{AI} highlight the growing importance of \ac{IS}s usage \citep[3]{alter2021new}. \ac{AI}/\ac{ML} technologies frequently function as epistemic and coordination tools, enabling communication and facilitating collaboration across professional, disciplinary, and technical boundaries between stakeholders with different expertise \citep[2]{krafft2020challenges}. These technologies can be viewed as \ac{BO}s, or boundary technology, residing in various communities, each with its own interpretation \citep[1-2]{krafft2020challenges}. \ac{AI}/\ac{ML} technologies assist in bridging different boundary types. They help process more information, aiding learning across syntactic and semantic boundaries, and contribute to creating higher-level intelligence across pragmatic boundaries \citep[1]{krafft2020challenges}. \newline
+Big data applications and \ac{ML} applications like natural-language understanding can process data to extract meaningful stories, crossing the semantic boundary \citep[2-3]{krafft2020challenges}. \ac{AI} applications' adaptation capabilities help create higher-level intelligence by representing different interests and values, essential for crossing pragmatic boundaries that involve conflicting goals and interests needing reconciliation \citep[2-3]{krafft2020challenges}. These technologies not only connect different areas, but also overcome inconsistencies between disciplines, accelerate knowledge creation and promote collaboration across disciplines. \citep[2]{krafft2020challenges}. Collaboration at the physical-digital interface requires technologies to facilitate shared values and goals regarding data ownership, access, and autonomy between humans and machines \citep[4]{krafft2020challenges}. \ac{BOT} can be applied to understand the limits organizational difference imposes on public sector organizations collaborating to learn about \ac{AI} \citep[1939]{wilson2023learning}. These technologies facilitate collaboration and shared understanding among diverse experts, such as data scientists and designers \citep[8-9]{yang2018investigating}.  \newline
+Collaboration often focuses on the joint development of a vision between areas of expertise which can take the form of unique abstractions of \ac{ML} capabilities \citep[5]{yang2018investigating}. Engaging with \ac{ML} involves establishing a shared understanding with data scientists to identify goals and exploring design ideas within technical constraints \citep[8]{yang2018investigating}. \ac{AI}-powered tools can act as \ac{BO}s to transfer technological performance to human performance \citep[1]{prentice2023artificial}. Prototypes of \ac{AI} systems facilitate prospective collective sensemaking between domain actors and \ac{AI} developers \citep[75]{särner2024prospective}. The ability of functional prototypes to build trust highlights the importance of visualizing technical progress through evolving \ac{BO}s \citep[80]{särner2024prospective}. Data tools for designers, such as visualizations, can serve as \ac{BO}s for discussing user behavior patterns \citep[9]{yang2018investigating}. Presenting user-centered \ac{ML} explanations, framed as \ac{BO}s, should balance flexibility and robustness to support design objectives and individual needs in multidisciplinary projects \citep[7]{ayobi2021machine}. \newline
+However, challenges exist. \ac{AI}'s 'black box' nature significantly impacts collaboration between domain experts and developers \citep[6144]{mayer2023managing}. Managers must bridge language barriers and enhance mutual understanding which can involve mandating explainable algorithms and creating \ac{BO}s like data visualizations to bring clarity \citep[6146]{mayer2023managing}. Users may have varying expectations of how \ac{AI} learns and disagree with its actual learning process, sometimes due to their mental models or tool limitations \citep[14]{chung2023artinter}. Misalignment between domain actors and \ac{AI} developers increases the importance of facilitators in sensemaking processes \citep[79]{särner2024prospective}. To be effective \ac{BO}s, prototypes must be of suitable maturity and detail for the project phase, context, and actors' \ac{AI} knowledge \citep[81]{särner2024prospective}. Currently, student designers entering the industry may need to collaborate with data scientists in unstructured ways with few \ac{BO}s to scaffold their work \citep[8]{yang2018investigating}. \newline
+Collaborative \ac{AI} system development requires prior knowledge in both the domain field and \ac{AI} for actors to form sufficient frames of reference needed for articulation, elaboration, and sensemaking \citep[79]{särner2024prospective}. \ac{BO}s facilitate collaboration in data science through several mechanisms: helping understand and define the problem, coordinating and managing tasks, creating common understanding, solving problems, integrating experience, and sharing results \citep[6-7]{rahlmeier2024bridging}. Successful trans-disciplinary collaboration can also arise from a shared pragmatism in research style and developed ideas, models, and practices, not solely from concept transfer via \ac{BO}s \citep[453, 456]{strübing1998bridging}.
+
+\subsubsection{AI Systems in Innovation and Product Design} \label{ai-systems-in-innovation-and-product-design}
+
+Collaboration often focuses on developing a shared vision between areas of expertise which can take the form of clear abstractions of \ac{ML} capabilities from all domains and an increasing reliance on \ac{ML} capabilities to develop them \citep[1]{yang2018investigating}. In this context, \ac{AI} systems themselves, or their conceptual designs, serve as \ac{BO}s, enabling creativity, innovation, and the negotiation of shared meanings between stakeholders. Establishing a shared understanding with data scientists is critical when working with \ac{ML} to discover innovations \citep[8]{yang2018investigating}. \newline
+Design thinking sessions can result in collectively produced and elaborated low-fidelity prototypes in the early project phases \citep[76]{särner2024prospective}. Designing \ac{AI} involves accounting for the diverse ways people relate to it \citep[418]{veletsianos2024artificial}, as some participants view \ac{AI} as a tool designed to enhance areas like education \citep[418]{veletsianos2024artificial}. The process of producing materials, such as onboarding documentation for an \ac{AI} system, can function as a boundary object that helps cross-functional teams (engineers, researchers, end-users) jointly understand how the system will be used and perceived \citep[10]{cai2021onboarding}. Co-designing \ac{ML}-based applications involves \ac{AI} researchers explaining \ac{ML} approaches using methods like data visualizations, analogies, and videos to participants \citep[3]{ayobi2021machine}. \newline
+Co-designing \ac{ML} explanations as \ac{BO}s requires representing the \ac{ML} concept accurately, evaluating understanding, and gaining a non-judgemental understanding of its appropriation in context \citep[6-7]{ayobi2021machine}. Gaining a sufficient understanding of \ac{ML} explanations supports participants in developing trust in design processes and overarching research objectives \citep[7]{ayobi2021machine}. Developing effective \ac{ML} explanations requires an iterative, multidisciplinary design process with a detailed understanding of \ac{ML} approaches, user groups, and purpose \citep[7]{ayobi2021machine}. Design objectives for \ac{AI} systems can vary, such as optimizing an \ac{AI} Assistant for standalone or human-collaborative use, managing sensitivity versus specificity, or intentionally designing it to compensate for human errors \citep[3]{cai2021onboarding}. Identifying specific contexts where people experience difficulty is useful for focusing the design and evaluation of the tool \citep[6]{cai2021onboarding}. Developers' design choices are influenced by factors like the importance of explainability. For instance, preferring linear models in recruitment because they are easier to explain, which is legally important \citep[6141]{mayer2023managing}. \newline
+Ethical considerations, such as addressing the fear that \ac{AI} might infringe on artists' work, suggest that responsible model builders should collect training data responsibly and actively involve artists in the process \citep[15]{chung2023artinter}. Managing the complexity of \ac{AI} systems in design is crucial. The 'black box' character of \ac{AI} is a key challenge in collaborative development, affecting the collaboration between domain experts and developers \citep[6144-6145]{mayer2023managing}. Transparency cannot be ensured solely through technical design \citep[6145]{mayer2023managing}. Domain experts' active involvement in design choices during development can help weaken this 'black box' character \citep[6146]{mayer2023managing}. Users may have varying expectations of how \ac{AI} functions and learns, sometimes disagreeing with its actual learning due to their mental models or limitations of the tool itself \citep[14]{chung2023artinter}. \newline
+Complexity in innovation design involves synthesizing different perspectives and managing large amounts of relevant information \citep[13]{koskinen2005metaphoric}. In the context of distributed \ac{AI}, design involves modeling and designing computer systems for real-world applications \citep[441]{strübing1998bridging}. This process includes translating problems into suitable interactive language or representation models, designing rules for decomposing and allocating problems, and modeling how single agents' problem-solving activities combine into comprehensive solutions \citep[444]{strübing1998bridging}. Designing such distributed systems as open networks that allow learning and flexibility in integrating, generating, or dismissing agents is beneficial \citep[444]{strübing1998bridging}. Communication in reflexive chat models can be designed so actors interpret incoming messages based on their goals or relevance structures \citep[452]{strübing1998bridging}. 
+However, for users working with these artifacts, the full social and political context of their design is often inaccessible \citep[452]{strübing1998bridging}.  \ac{AI} systems, or their designs, facilitate creativity and innovation by enabling negotiation of shared meanings. Data scientists can improve the design of \ac{BO}s to enhance collaboration across data science initiatives, for example, by formulating requirements for collaboration documents \citep[12]{rahlmeier2024bridging}. Tools can be designed to facilitate \ac{BO}s in specific settings like art commissions to support communication \citep[3]{chung2023artinter}.
+
+\subsubsection{Governance, Learning, and Ethical Tensions in AI Use} \label{governance-learning-and-ethical-tensions-in-ai-use}
+
+Understanding the implications of \ac{AI} use in society, governance, and organizational settings reveals significant structural tensions, values, and negotiations, which \ac{BOT} helps to make visible. A key challenge is the black-box character of many \ac{AI}/\ac{ML} models and systems (\citealp[6145]{mayer2023managing}; \citealp[11]{rahlmeier2024bridging}; \citealp[14]{zebhauser2023entrepreneurial}; \citealp[4]{alter2021new}). This can lead to domain experts not understanding or perceiving a mismatch between their own judgments and \ac{AI}-based decisions \citep[6143]{mayer2023managing}. While some ventures may use this black-box quality to their advantage to coordinate efforts for obtaining resources from stakeholders \citep[14]{zebhauser2023entrepreneurial}, \ac{IS}s based on \ac{ML} may attain goals without providing transparent interaction, linking to controversies about making \ac{AI} explainable \citep[4]{alter2021new}. Data scientists must explain the limitations and potential risks associated with complex or 'black box' models \citep[11]{rahlmeier2024bridging}. Building a common understanding between developers and domain experts is crucial \citep[6145]{mayer2023managing}. This involves establishing common ground and mutual reflection on each other's knowledge and work practices, including learning how the other group works and what is needed to accomplish their tasks \citep[6145]{mayer2023managing}. Enhancing transparency regarding the \ac{AI} system is particularly important due to its 'black box character, and this cannot be ensured solely by technical design \citep[6145]{mayer2023managing}. \newline
+Managers play a role in ensuring domain experts understand \ac{AI}-specific techniques to participate in development and promotion, while also ensuring developers understand domain experts' explicit and implicit decision-making patterns \citep[6145]{mayer2023managing}. Ethical considerations are prominent in \ac{AI} deployment. Fostering healthy relationships with technologies, recognizing that humans are in relationship with technologies and vice versa, is presented as an ethical imperative requiring ethical responses \citep[413]{veletsianos2024artificial}. Conceptualizing \ac{ML} explanations as \ac{BO}s means acknowledging that abstraction and ambiguity can lead to divergent viewpoints and misunderstandings \citep[6]{ayobi2021machine}. It involves gaining a holistic understanding of how \ac{ML} explanations are appropriated in context to avoid misalignments between real world experience and scientific concepts \citep[6]{ayobi2021machine}. \newline
+While gaining a sufficient understanding of \ac{ML} explanations can build trust in design processes and technologies, what constitutes a 'good enough' understanding and whether it is ethically responsible depends on contextual factors like the sensitivity of a research setting \citep[7]{ayobi2021machine}. For example, the tension between the desirability of predictive functionalities and the fatal implications of false predictions in sensitive areas like medicine highlights ethical complexities \citep[7]{ayobi2021machine}. Governance aspects are implicitly linked to the structural tensions \ac{BOT} makes visible. Understanding how intelligent agents (\ac{AI} systems) perceive and operate, characterized by interaction patterns (responsiveness, interaction capability, mobility) and intentionality (reasoning, control, desired/changing behavior based on knowledge), is relevant to their function within organizational and societal structures \citep[1156]{kot2020concept}. Building common understanding facilitates learning about others' work practices, and gaining understanding of \ac{ML} explanations supports trust in related technologies (\citealp[6145]{mayer2023managing}; \citealp[7]{ayobi2021machine}). Intelligent agents have the capability to change behavior and decisions based on obtained knowledge and experience \citep[1156]{kot2020concept}.
+
+\subsection{Methodological Approaches in the Reviewed Literature} \label{methodological-approaches-in-the-reviewed-literature}
+
+The reviewed literature employs a variety of methodological approaches with qualitative research methodologies making up the majority of the sources analyzed. These studies often utilized techniques such as case studies, semi-structured interviews, and various forms of qualitative data analysis like thematic analysis or coding (e.g., \citealp[315]{rosenkranz2014boundary}; \citealp[216]{corsaro2018crossing}; \citealp[4-5]{rahlmeier2024bridging}). \newline
+Quantitative methods, such as surveys or statistical analysis, have also been used, but to a much lesser extent (e.g., \citealp[3-4]{prentice2023artificial}; \citealp[4]{gantman2011boundary}; \citealp[4]{gantman2014communication}; \citealp[30]{abson2014ecosystem}). \newline
+A few studies combine qualitative and quantitative approaches to provide a comprehensive understanding of the phenomena being studied (e.g., \citealp[9, 12]{chung2023artinter}; \citealp[4-5]{bakhaev2023cocreating}; \citealp[6]{petrik2020boundary}; \citealp[7]{petrik2021exploring}). Remaining studies consisted of conceptual papers, literature reviews, design science research, or other non-empirical or methodological contributions. Even though not generating new empirical data through traditional methodologies, these papers play a crucial role in the development of new theories, synthesize existing knowledge or propose new frameworks (e.g., \citealp[5-6]{strübing1998bridging}; \citealp[5-6]{abraham2013enterprise}; \citealp[5-6]{folmer2014method}). 
+
+\subsection{Thematic Clusters of BOT Use in IS} \label{thematic-clusters-bot-is}
+
+Among the 46 studies analyzed, \ac{BOT} was predominantly applied in contexts involving collaboration, knowledge sharing, and the bridging of different perspectives within various contexts, particularly within \ac{IS}s and, increasingly, \ac{AI} and \ac{ML}. The core theme across many studies is how \ac{BO}s, as artifacts or concepts adaptable to different viewpoints yet robust enough to maintain common identity, facilitate work and understanding across boundaries. Within \ac{IS}s the theory is broadly used to analyze the design, use, and effectiveness of \ac{IT} artifacts and systems to overcome knowledge gaps between stakeholders, strengthen collaboration and sharing knowledge in \ac{IS}s development and across organizational boundaries. \newline
+With \ac{AI} and \ac{ML} as a significant subset in \ac{IS}s research, studies explore \ac{AI}-powered tools, systems, and their components as potential \ac{BO}s. With their role as \ac{BO}s, they mediate interaction and understanding between humans, different expert groups, and between humans and \ac{AI}. Research also examines how \ac{BOT} helps understand the challenges and dynamics of collaboration, knowledge sharing, and sense making in the context of developing, implementing, and interacting with \ac{AI}/\ac{ML} systems. This includes bridging the gaps in understanding AI's capabilities, limitations, and ethical considerations among diverse stakeholders. To conclude, the analyzed studies demonstrate the relevance of \ac{BOT} to analyze complex collaborative settings in the fast, dynamic digital age.
+
+\section{Evaluation of BOT in IS Research} \label{evaluation-of-bot-in-is-research}
+
+The application of \ac{BOT} is not possible without overcoming its challenges. This section critically evaluates the usage of \ac{BOT} in \ac{IS}s research by addressing its conceptual strengths and practical limitations. Also it compares \ac{BOT} with alternative theories.
+
+\subsection{Strengths of BOT in IS Research} \label{strengths-of-bot-in-is-research}
+
+The application of \ac{BOT} within \ac{IS}s research, as evidenced by the reviewed literature, demonstrates several key strengths in understanding and facilitating complex collaboration . A primary strength lies in its robust explanatory power for how knowledge sharing and coordination occur across multiple diverse communities \citep[6372]{vanlooy2024theoretical}. For instance, studies consistently show \ac{BOT}'s utility in analyzing how artifacts such as prototypes, specifications, and even the \ac{BO} itself act as crucial mediators, enabling stakeholders with differing expertise—such as business analysts and \ac{IT} developers—to achieve a shared understanding and align their efforts \citep[5118]{weeger2017artefacts}. Furthermore, \ac{BOT} provides a valuable framework to analyze the sociotechnical dynamics inherent in \ac{IS} projects, highlighting how these objects are not just passive tools but are actively involved in shaping interactions, negotiating meanings, and structuring collaborative processes \citep[582]{doolin2012sociomateriality}.
+
+\subsection{Limitations and Criticisms of BOT in IS Research} \label{limitations-and-criticisms-of-bot-in-is-research}
+
+Despite its strengths, the application of \ac{BOT} in \ac{IS}s research is not without limitations and criticisms. One frequently cited concern is the potentially static nature attributed to \ac{BO}s in some studies \citep[81]{särner2024prospective}. As projects evolve, an object that once facilitated understanding can become outdated or a source of misunderstanding if not continuously adapted or re-negotiated. For example, \citet[325]{rosenkranz2014boundary} highlighted that the capacity of \ac{BO}s might be inadequate for the complexity on the knowledge boundary, potentially impeding knowledge sharing. Another significant challenge, as identified by \citet[449]{carlile2002pragmatic}, lies in managing pragmatic boundaries, especially those requiring the transformation of knowledge and balancing different interests which are considerably more resource-intensive and complex to navigate than syntactic or semantic boundaries. Additionally, the interpretative flexibility of \ac{BO}s, while a strength, can also be a limitation if it leads to unresolved ambiguities or allows power dynamics to inappropriately influence the results without being considered \citep[1814-1815]{huvila2017boundary}.
+
+\section{Future Research Directions} \label{future-research-directions}
+
+This systematic literature review reveals several open research gaps in the application of \ac{BOT} within the context of \ac{IS}s, particularly concerning \ac{AI} and \ac{ML}. While there is growing interest, the nuances of how different types of \ac{AI}/\ac{ML} artifacts, from algorithms and datasets to \ac{AI}-driven dashboards and explanatory interfaces, function as \ac{BO}s across diverse stakeholder groups (e.g., developers, users, regulators) remain underexplored. Furthermore, there is a lack of longitudinal studies that track the evolution of \ac{AI}/\ac{ML}-related \ac{BO}s over the lifecycle of a project, detailing how their form, meaning, and effectiveness change as shared understanding and the \ac{AI} systems themselves develop. The ethical dimensions embedded within \ac{AI}/\ac{ML} \ac{BO}s, such as how they represent or obscure bias, fairness, and transparency, may also require further investigation. For example, how do design choices in \ac{AI} explanations impact trust and accountability across different user groups with different levels of \ac{AI} knowledge? Due to the rapidly growing field of \ac{AI}, the amount of relevant literature will also increase which will be relevant for future literature reviews.
+
+\subsection{Potential Enhancements to BOT for AI/ML Research} \label{potential-enhancements-to-bot-for-ai-ml-research}
+
+To enhance the usability of \ac{BOT} for \ac{AI}/\ac{ML} research, several theoretical and practical adaptations could be beneficial. Given the dynamic and often 'black-box' nature of many \ac{AI}/\ac{ML} systems, \ac{BOT} could be enhanced by incorporating concepts that explicitly address the explainability of \ac{AI} as a characteristic of its \ac{BO} function. This might involve the development of explicit \ac{AI}-\ac{BO}s. Considering the iterative and data-driven nature of \ac{AI}/\ac{ML}, an extension of \ac{BOT} that emphasizes the processual and emergent characteristics of \ac{BO}s in these contexts, perhaps drawing from theories on dynamic \ac{BO}s or organizational learning, could prove valuable. This would shift focus from static artifacts to the ongoing practices of \ac{BO}-work required to maintain shared understanding as \ac{AI} models evolve and new data insights emerge.
+
+\section{Conclusion} \label{conclusion}
+
+This thesis embarked on a systematic literature review to explore the application and conceptualization of \ac{BOT} within \ac{IS}s research, with a particular focus on its relevance in the rapidly evolving domain of \ac{AI} and \ac{ML}. Originating from studies of collaboration in scientific communities, \ac{BOT} provides a framework for understanding how shared artifacts facilitate communication and cooperation across diverse groups. Adhering to the eight-step methodology for systematic literature reviews proposed by \citet[43-44]{okoli2015guide}, this study identified, analyzed, and synthesized relevant scholarly articles to map the current landscape of BOT research at the intersection of \ac{IS}s and \ac{AI}/\ac{ML}, aiming to uncover key themes, applications, and future directions.
+
+\subsection{Summary of the Research Topic and Approach} \label{summary-of-the-research-topic-and-approach}
+
+The goal of this review was to explore the concept of \ac{BOT} with its origins, further developments and its adaptions for \ac{IS}s and in the context of \ac{AI}/\ac{ML} applications and research. Therefore a \ac{SLR} after \citet[43-44]{okoli2015guide} was performed. With this systematic procedure, relevant studies were identified, structured, and important data extracted to satisfy the research topic.
+
+\subsection{Key Findings} \label{key-findings}
+
+The key findings of this review indicate that \ac{BOT} is a widely applied and valuable conceptual tool within \ac{IS}s research for analyzing and understanding collaborative practices, particularly in knowledge-intensive activities like system development and innovation. The review confirms that artifacts such as prototypes, documents, and shared \ac{IS}s frequently function as \ac{BO}s, mediating interaction and fostering shared understanding among stakeholders with diverse perspectives. In the context of \ac{AI}/\ac{ML}, the literature reveals an emerging but significant trend where \ac{AI} systems, their components (e.g., models, data visualizations, explanations), and related design artifacts are increasingly being conceptualized and utilized as \ac{BO}s. These \ac{AI}-related \ac{BO}s play a crucial role in bridging the complex knowledge gaps between technical experts, business users, and other stakeholders, although challenges related to the 'black box' nature of \ac{AI}, ethical considerations, and the dynamic evolution of these objects are prominent themes.
+
+\subsection{Critical Reflection and Limitations} \label{critical-reflection-and-limitations}
+
+While this systematic literature review was conducted with rigor following established guidelines, certain limitations must be acknowledged. The search strategy, though comprehensive across several major databases, may not have captured every relevant publication, particularly those in nascent or highly specialized \ac{AI}/\ac{ML} subfields or those not explicitly using established \ac{BOT} terminology. As the review was conducted by a single researcher, the potential for subjective interpretation during the screening and data extraction phases exists, despite efforts to maintain consistency through self-developed guidelines. Furthermore, the dynamic nature of \ac{AI}/\ac{ML} research means that new relevant studies may have emerged since the conclusion of the literature search. The focus on English-language publications also means that valuable contributions in other languages may have been omitted. These limitations suggest that the findings represent a snapshot of a rapidly evolving field and should be interpreted with these constraints in mind.
+
+\subsection{Future Outlook} \label{future-outlook}
+
+Looking ahead, \ac{BOT} is poised to remain a critical lens for understanding and navigating the increasingly complex collaborative landscapes of \ac{IS}s, especially as \ac{AI} and \ac{ML} continue their transformative journey. The challenges of interdisciplinary collaboration, knowledge integration, and ethical governance inherent in \ac{AI}/\ac{ML} development and deployment will only intensify the need for effective \ac{BO}s and the theoretical frameworks to understand their role. Future research should continue to explore the dynamic, multifaceted, and ethically charged nature of \ac{BO}s in \ac{AI} contexts, moving towards more nuanced models that can guide both theory and practice.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Literaturverzeichnis wird 
+%% automatisch eingefügt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\lhead{}
+\printbibliography
+\addcontentsline{toc}{section}{\bibname}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Anhang (optional) 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\appendix
+%\section{Appendix A} % Bei englischsprachiger Arbeit anzupassen auf: Appendix A
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Eidesstattliche Erklärung
+%% muss angepasst werden 
+%% in Erklaerung.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Erklaerung.tex}
+
+\end{document}
